@@ -12,7 +12,7 @@
 
 	<h1>Clientes</h1>
 	
-	<button onclick="windown.loction.href='/ismac-libreria-web/clientes/findOne?opcion=1'; return false">
+	<button onclick="window.location.href='/ismac-libreria-web/clientes/findOne?opcion=1; return false?">
 	Agregar
     </button>
 	
@@ -30,20 +30,23 @@
 		</thead>
 		
 		<tbody>
-			<c:forEach var="item" items="${cliente}">
+			<c:forEach var="items" items="${clientes}">
 				<tr>
-					<td>${item.idCliente}</td>
-					<td>${item.cedula}</td>
-					<td>${item.nombre}</td>
-					<td>${item.apellido}</td>
-					<td>${item.direccion}</td>
-					<td>${item.telefono}</td>
-					<td>${item.correo}</td>
+					<td>${items.idCliente}</td>
+					<td>${items.cedula}</td>
+					<td>${items.nombre}</td>
+					<td>${items.apellido}</td>
+					<td>${items.direccion}</td>
+					<td>${items.telefono}</td>
+					<td>${items.correo}</td>
 					<td>
-					 	<button onclick="windown.loction.href='/ismac-libreria-web/clientes/findOne?idCliente=${item.idCliente}&opcion=1'; return false">
+					 	<button onclick="window.location.href='/ismac-libreria-web/clientes/findOne?idCliente=${items.idCliente}&opcion=1'; return false;">
 					 		Actualizar
 					 	</button>
-					 	<button onclick="windown.loction.href='/ismac-libreria-web/clientes/findOne?idCliente=${item.idCliente}&opcion=2'; return false">
+					 	
+					 	
+					 	
+					 	<button onclick="windown.location.href='/ismac-libreria-web/clientes/findOne?idCliente=${items.idCliente}&opcion=2'; return false">
 					 		Eliminar
 					 	</button>
 					</td>

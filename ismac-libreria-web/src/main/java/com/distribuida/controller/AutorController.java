@@ -46,7 +46,7 @@ public class AutorController {
 		
 		if(idAutor != null) {
 			Autor autor = autorDAO.findOne(idAutor);
-			model.addAttribute("Autor", autor);
+			model.addAttribute("autor", autor);
 		}
 		
 		if (opcion == 1) return "add-autor";

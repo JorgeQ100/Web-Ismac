@@ -21,7 +21,7 @@ public class LibroDAOImpl implements LibroDAO {
 	@Transactional
 	public List<Libro> finALL() {
 		Session session = sessionFactory.getCurrentSession();
-		return session.createQuery("from Lirbo", Libro.class).getResultList();
+		return session.createQuery("from Libro", Libro.class).getResultList();
 	}
 
 	@Override

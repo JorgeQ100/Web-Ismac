@@ -62,14 +62,14 @@ public class AutorDAOImpl2 implements AutorDAO {
 		Query query = session.createQuery("UPDATE Autor au SET au.nombre =: keyNombre "                 
 		                      +"                              , au.apellido =: keyApellido "
 				              +"                              , au.pais =: keyPais "
-		                      +"                              , au.direccion =: direccion "
+		                      +"                              , au.direccion =: keydireccion "
 				              +"                              , au.telefono =: keyTelefono "
 				              + "                             , au.correo =: keyCorreo "
 				              + "                        WHERE au.idAutor =: KeyIdAutor ");
 		query.setParameter("keyNombre", autor.getNombre());
 		query.setParameter("keyApellido", autor.getApellido());
 		query.setParameter("keyPais", autor.getPais());
-		query.setParameter("direccion", autor.getDireccion());
+		query.setParameter("keydireccion", autor.getDireccion());
 		query.setParameter("keyTelefono", autor.getTelefono());
 		query.setParameter("keyCorreo", autor.getCorreo());
 		query.setParameter("KeyIdAutor", autor.getIdAutor());

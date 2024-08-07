@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-@Table(name = "libros")
+@Table(name = "libro")
 public class Libro {
 	
 	@Id
@@ -59,24 +59,7 @@ public class Libro {
 	private Autor autor;
 	
 	public Libro() {}
-	//hdadafefedqdqw
-	/**
-	 * @param idLibro
-	 * @param titulo
-	 * @param editorial
-	 * @param numPaginas
-	 * @param edicion
-	 * @param idioma
-	 * @param fechaPublicacion
-	 * @param descripcion
-	 * @param tipoPasta
-	 * @param iSBN
-	 * @param numEjemplares
-	 * @param portada
-	 * @param presentacion
-	 * @param precio
-	 */
-	
+
 	public Libro(int idLibro, String titulo, String editorial, int numPaginas, String edicion, String idioma,
 			Date fechaPublicacion, String descripcion, String tipoPasta, String iSBN, int numEjemplares, String portada,
 			String presentacion, float precio) {
@@ -89,7 +72,7 @@ public class Libro {
 		this.fechaPublicacion = fechaPublicacion;
 		this.descripcion = descripcion;
 		this.tipoPasta = tipoPasta;
-		this.ISBN = iSBN;
+		this.ISBN = ISBN;
 		this.numEjemplares = numEjemplares;
 		this.portada = portada;
 		this.presentacion = presentacion;
@@ -174,7 +157,7 @@ public class Libro {
 	}
 
 	public void setISBN(String iSBN) {
-		ISBN = iSBN;
+		ISBN = ISBN;
 	}
 
 	public int getNumEjemplares() {

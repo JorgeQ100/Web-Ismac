@@ -36,11 +36,12 @@ public class Cliente {
 		
 	
 		public Cliente(){}
-		
-		
-		public Cliente(int idCliente, String cedula, String nombre, String apellido, String direccion,
-				String telefono, String correo) {
-						this.idCliente = idCliente;
+
+
+
+		public Cliente(int idCliente, String cedula, String nombre, String apellido, String direccion, String telefono, String correo) {
+			
+			this.idCliente = idCliente;
 			this.cedula = cedula;
 			this.nombre = nombre;
 			this.apellido = apellido;
@@ -48,6 +49,7 @@ public class Cliente {
 			this.telefono = telefono;
 			this.correo = correo;
 		}
+
 
 
 		public int getIdCliente() {
@@ -55,9 +57,11 @@ public class Cliente {
 		}
 
 
+
 		public void setIdCliente(int idCliente) {
 			this.idCliente = idCliente;
 		}
+
 
 
 		public String getCedula() {
@@ -65,9 +69,11 @@ public class Cliente {
 		}
 
 
+
 		public void setCedula(String cedula) {
 			this.cedula = cedula;
 		}
+
 
 
 		public String getNombre() {
@@ -75,9 +81,11 @@ public class Cliente {
 		}
 
 
+
 		public void setNombre(String nombre) {
 			this.nombre = nombre;
 		}
+
 
 
 		public String getApellido() {
@@ -85,19 +93,23 @@ public class Cliente {
 		}
 
 
+
 		public void setApellido(String apellido) {
 			this.apellido = apellido;
 		}
 
 
-		public String getFechaNacimiento() {
+
+		public String getDireccion() {
 			return direccion;
 		}
 
 
-		public void setdireccion(String direccion) {
+
+		public void setDireccion(String direccion) {
 			this.direccion = direccion;
 		}
+
 
 
 		public String getTelefono() {
@@ -105,9 +117,11 @@ public class Cliente {
 		}
 
 
+
 		public void setTelefono(String telefono) {
 			this.telefono = telefono;
 		}
+
 
 
 		public String getCorreo() {
@@ -115,17 +129,19 @@ public class Cliente {
 		}
 
 
+
 		public void setCorreo(String correo) {
 			this.correo = correo;
 		}
 
 
+
 		@Override
 		public String toString() {
 			return "Cliente [idCliente=" + idCliente + ", cedula=" + cedula + ", nombre=" + nombre + ", apellido="
-					+ apellido + ", fechaNacimiento=" + direccion + ", telefono=" + telefono + ", correo="
-					+ correo + "]";
+					+ apellido + ", direccion=" + direccion + ", telefono=" + telefono + ", correo=" + correo + "]";
 		}
+		
 		
 		
 		

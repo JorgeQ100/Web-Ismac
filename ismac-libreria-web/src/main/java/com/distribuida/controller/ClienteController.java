@@ -51,8 +51,8 @@ public class ClienteController {
 	//	try {
 			
 			if (idCliente != null) {
-				Cliente cliente = clienteDAO.findOne(idCliente);
-				model.addAttribute("cliente", cliente);
+				Cliente clientes = clienteDAO.findOne(idCliente);
+				model.addAttribute("clientes", clientes);
 			}
 			
 			if (opcion == 1) return "clientes-add";  //actuliazcion
@@ -69,11 +69,11 @@ public class ClienteController {
 	
 	@PostMapping("/add")
 	public String add(@RequestParam("idCliente") @Nullable Integer idCliente
-			         ,@RequestParam("cedula") @Nullable Integer cedula
+			         ,@RequestParam("cedula") @Nullable String cedula
 			         ,@RequestParam("nombre") @Nullable String nombre
 			         ,@RequestParam("apellido") @Nullable String apellido
 			         ,@RequestParam("direccion") @Nullable String direccion
-			         ,@RequestParam("telefono") @Nullable Integer telefono
+			         ,@RequestParam("telefono") @Nullable String telefono
 			         ,@RequestParam("correo") @Nullable String correo
 			         , Model model
 			) {
@@ -82,10 +82,10 @@ public class ClienteController {
 		//try {
 			
 			if(idCliente == null) {
-				Cliente cliente = new Cliente(0, correo, nombre, apellido, direccion, direccion, correo);
+				Cliente cliente = new Cliente(0, cedula, nombre, apellido, direccion, telefono, correo);
 				clienteDAO.add(cliente); 
 				}else { 
-					Cliente cliente = new Cliente(idCliente, correo, nombre, apellido, direccion, direccion, correo);
+					Cliente cliente = new Cliente(idCliente, cedula, nombre, apellido, direccion, telefono, correo);
 					clienteDAO.up(cliente); 
 				}
 				return "redirect:/clientes/findAll";  //IR A FROMULARIO WEB POR PATH O URL

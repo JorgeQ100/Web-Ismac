@@ -37,7 +37,7 @@
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver" />
         <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/bdlibreria" />
         <property name="user" value="root" />
-        <property name="password" value="operacion10" /> 
+        <property name="password" value="root" /> 
 
         <!-- Propiedades connection pool para C3P0 -->
         <property name="minPoolSize" value="5" />

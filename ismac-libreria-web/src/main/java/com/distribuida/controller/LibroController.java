@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,7 +19,7 @@ import com.distribuida.dao.LibroDAO;
 import com.distribuida.entities.Libro;
 
 @Controller
-@RequestMapping("/libors")
+@RequestMapping("/libros")
 public class LibroController {
 	
 	@Autowired
@@ -36,9 +37,9 @@ public class LibroController {
 	@GetMapping("/findAll")
 	private String findAll(ModelMap modelMap) {
 		
-		List<Libro> libros = libroDAO.finALL();
-		modelMap.addAttribute("libros", libros);
-		return "listar-libros";
+		List<Libro> libro = libroDAO.finALL();
+		modelMap.addAttribute("libro", libro);
+		return "libros-listar";
 		
 	}
 	
