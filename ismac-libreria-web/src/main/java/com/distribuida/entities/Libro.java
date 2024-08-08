@@ -50,11 +50,11 @@ public class Libro {
 	@Column(name = "precio")
 	private float precio;
 	
-	@JoinColumn(name = "categoria")
+	@JoinColumn(name = "id_categoria")
 	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	private Categoria categoria;
-	
-	@JoinColumn(name = "autor")
+
+	@JoinColumn(name = "id_autor")
 	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	private Autor autor;
 	
@@ -156,7 +156,7 @@ public class Libro {
 		return ISBN;
 	}
 
-	public void setISBN(String iSBN) {
+	public void setISBN(String ISBN) {
 		ISBN = ISBN;
 	}
 

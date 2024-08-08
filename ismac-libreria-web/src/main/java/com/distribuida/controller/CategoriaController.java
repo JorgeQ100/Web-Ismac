@@ -23,7 +23,7 @@ public class CategoriaController {
 	@GetMapping("/findAll")
 	public String findAll(Model model) {
 		List<Categoria> categorias = categoriaDAO.finALL();
-		model.addAttribute("categoria", categorias);
+		model.addAttribute("categorias", categorias);
 		return "Listar-Categoria";
 	}
 	
@@ -52,8 +52,8 @@ public class CategoriaController {
 			Categoria categoria = new Categoria(0, Categoria, descripcion);
 			categoriaDAO.add(categoria);
 		}else {
-			Categoria categoria2 = new Categoria(idCategoria, Categoria, descripcion);
-			categoriaDAO.add(categoria2);
+			Categoria categoria = new Categoria(idCategoria, Categoria, descripcion);
+			categoriaDAO.add(categoria);
 		}
 		
 		return "redirect:/categorias/findAll";

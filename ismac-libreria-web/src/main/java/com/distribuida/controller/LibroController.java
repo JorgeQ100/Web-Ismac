@@ -54,8 +54,8 @@ public class LibroController {
 			modelMap.addAttribute("libro", libro);
 		}
 		
-		modelMap.addAttribute("autores", autorDAO.finALL());
-		modelMap.addAttribute("categoria", categoriaDAO.finALL());
+		modelMap.addAttribute("autor", autorDAO.finALL());
+		modelMap.addAttribute("categorias", categoriaDAO.finALL());
 		
 		
 		if (opcion == 1 )return "add-libros";

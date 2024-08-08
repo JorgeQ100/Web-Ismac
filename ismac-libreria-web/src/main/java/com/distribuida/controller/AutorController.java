@@ -28,7 +28,7 @@ public class AutorController {
 			
 			List<Autor> autor = autorDAO.finALL();
 			
-			model.addAttribute("Autor", autor);
+			model.addAttribute("autor", autor);
 			
 			return "Listar-Autores";
 			
@@ -71,8 +71,8 @@ public class AutorController {
 	                 	Autor autor = new Autor(0, nombre, apellido, pais, direccion, telefono, correo);
 	                 	autorDAO.add(autor);
 	                 }else{
-	                 	Autor autor2 = new Autor(idAutor, nombre, apellido, pais, direccion, telefono, correo);
-	                 	autorDAO.up(autor2);
+	                 	Autor autor = new Autor(idAutor, nombre, apellido, pais, direccion, telefono, correo);
+	                 	autorDAO.up(autor);
 	                 }
 	                 
 	                 return "redirect:/clientes/findAll";
