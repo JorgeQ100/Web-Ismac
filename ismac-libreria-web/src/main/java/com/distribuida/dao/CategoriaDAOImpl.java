@@ -22,30 +22,36 @@ public class CategoriaDAOImpl implements CategoriaDAO {
 	@Transactional
 	public List<Categoria> finALL() {
 		Session session = sessionFactory.getCurrentSession();
-		return session.createQuery("SELECT au FROM Categoria cat", Categoria.class).getResultList();
+		return session.createQuery("from Categoria", Categoria.class).getResultList();
 	}
 
 	@Override
+	@Transactional
 	public Categoria findOne(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+		return session.get(Categoria.class, id);
 	}
 
 	@Override
+	@Transactional
 	public void add(Categoria categoria) {
-		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		session.saveOrUpdate(categoria);
 
 	}
 
 	@Override
+	@Transactional
 	public void up(Categoria categoria) {
-		// TODO Auto-generated method stub
-
+		Session session = sessionFactory.getCurrentSession();
+		session.saveOrUpdate(categoria);
 	}
 
 	@Override
+	@Transactional
 	public void dell(int id) {
-		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		session.delete(findOne(id));
 
 	}
 

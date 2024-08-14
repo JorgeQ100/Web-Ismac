@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -58,56 +59,58 @@ public class LibroController {
 		modelMap.addAttribute("categorias", categoriaDAO.finALL());
 		
 		
-		if (opcion == 1 )return "add-libros";
+		if (opcion == 1 )return "libros-add";
 		else return "del-libros";
 			
 	}
 	
 	
 	@PostMapping("/add")
-	private String add(@RequestParam("idLibro")@Nullable Integer idLibro
-			, @RequestParam("titulo")@Nullable String titulo
-			, @RequestParam("editorial")@Nullable String editorial
-			, @RequestParam("numPaginas")@Nullable Integer numPaginas
-			, @RequestParam("edicion")@Nullable String edicion
-			, @RequestParam("idioma")@Nullable String idioma
-			, @RequestParam("fechaPublicacion")@Nullable Date fechaPublicacion
-			, @RequestParam("descripcion")@Nullable String descripcion
-			, @RequestParam("tipoPasta")@Nullable String tipoPasta
-			, @RequestParam("ISBN")@Nullable String ISBN
-			, @RequestParam("numEjemplares")@Nullable Integer numEjemplares
-			, @RequestParam("portada")@Nullable String portada
-			, @RequestParam("presentacion")@Nullable String presentacion
-			, @RequestParam("precio")@Nullable float precio
-			, @RequestParam("id_categoria")@Nullable Integer id_categoria
-			, @RequestParam("id_autor")@Nullable Integer id_autor
-			, ModelMap modelMap
-			) {
+	private String add(@RequestParam("idLibro") @Nullable Integer idLibro,
+	                   @RequestParam("titulo") @Nullable String titulo,
+	                   @RequestParam("editorial") @Nullable String editorial,
+	                   @RequestParam("numPaginas") @Nullable Integer numPaginas,
+	                   @RequestParam("edicion") @Nullable String edicion,
+	                   @RequestParam("idioma") @Nullable String idioma,
+	                   @RequestParam("fechaPublicacion") @Nullable @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaPublicacion,
+	                   @RequestParam("descripcion") @Nullable String descripcion,
+	                   @RequestParam("tipoPasta") @Nullable String tipoPasta,
+	                   @RequestParam("ISBN") @Nullable String ISBN,
+	                   @RequestParam("numEjemplares") @Nullable Integer numEjemplares,
+	                   @RequestParam("portada") @Nullable String portada,
+	                   @RequestParam("presentacion") @Nullable String presentacion,
+	                   @RequestParam("precio") @Nullable float precio,
+	                   @RequestParam("categoria") @Nullable Integer categoria,
+	                   @RequestParam("autor") @Nullable Integer autor,
+	                   ModelMap modelMap) {
 		
-		if(idLibro == null) {
-			
-			Libro libro = new Libro(0, titulo, editorial, numPaginas, edicion, idioma, fechaPublicacion
-					, descripcion, tipoPasta, ISBN, numEjemplares, portada, presentacion, precio);
-			libro.setCategoria(categoriaDAO.findOne(id_categoria));
-			libro.setAutor(autorDAO.findOne(id_autor));
-			
-			libroDAO.add(libro);
-			
-		}else {
-			
-			Libro libro = new Libro(idLibro, titulo, editorial, numPaginas, edicion, idioma, fechaPublicacion
-					, descripcion, tipoPasta, ISBN, numEjemplares, portada, presentacion, precio);
-			libro.setCategoria(categoriaDAO.findOne(id_categoria));
-			libro.setAutor(autorDAO.findOne(id_autor));
-			
-			libroDAO.up(libro);
-			
-		}
+		 if (categoria == null || autor == null) {
+		        modelMap.addAttribute("error", "Debe seleccionar una categoría y un autor.");
+		        return "redirect:/libros/listar-libros";  // Nombre de la vista donde se muestra el formulario de nuevo.
+		    }
 		
-		
-		return "redirect:/libros/listar-libros";
+
+	    if (idLibro == null) {
+	        Libro libro = new Libro(0, titulo, editorial, numPaginas, edicion, idioma, fechaPublicacion,
+	                                descripcion, tipoPasta, ISBN, numEjemplares, portada, presentacion, precio);
+	        libro.setCategoria(categoriaDAO.findOne(categoria));
+	        libro.setAutor(autorDAO.findOne(autor));
+
+	        libroDAO.add(libro);
+
+	    } else {
+
+	        Libro libro = new Libro(idLibro, titulo, editorial, numPaginas, edicion, idioma, fechaPublicacion,
+	                                descripcion, tipoPasta, ISBN, numEjemplares, portada, presentacion, precio);
+	        libro.setCategoria(categoriaDAO.findOne(categoria));
+	        libro.setAutor(autorDAO.findOne(autor));
+
+	        libroDAO.up(libro);
+	    }
+
+	    return "redirect:/libros/listar-libros";
 	}
-	
+
 	
 	@GetMapping("/del")
 	private String del(@RequestParam("idLibro")@Nullable Integer idLibro ) {

@@ -25,18 +25,21 @@ public class LibroDAOImpl implements LibroDAO {
 	}
 
 	@Override
+	@Transactional
 	public Libro findOne(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		return session.get(Libro.class, id);
 	}
 
 	@Override
+	@Transactional
 	public void add(Libro libro) {
 		Session session = sessionFactory.getCurrentSession();
 		session.saveOrUpdate(libro);
 	}
 
 	@Override
+	@Transactional
 	public void up(Libro libro) {
 		Session session = sessionFactory.getCurrentSession();
 		session.saveOrUpdate(libro);
@@ -44,6 +47,7 @@ public class LibroDAOImpl implements LibroDAO {
 	}
 
 	@Override
+	@Transactional
 	public void dell(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		session.delete(id);
