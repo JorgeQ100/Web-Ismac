@@ -46,7 +46,7 @@
 					 	
 					 	
 					 	
-					 	<button onclick="windown.location.href='/ismac-libreria-web/clientes/findOne?idCliente=${items.idCliente}&opcion=2'; return false">
+					 	<button onclick="window.location.href='/ismac-libreria-web/clientes/findOne?idCliente=${items.idCliente}&opcion=2'; return false;">
 					 		Eliminar
 					 	</button>
 					</td>
