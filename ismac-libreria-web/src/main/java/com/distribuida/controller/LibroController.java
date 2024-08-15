@@ -80,8 +80,8 @@ public class LibroController {
 	                   @RequestParam("portada") @Nullable String portada,
 	                   @RequestParam("presentacion") @Nullable String presentacion,
 	                   @RequestParam("precio") @Nullable float precio,
-	                   @RequestParam("categoria") @Nullable Integer categoria,
-	                   @RequestParam("autor") @Nullable Integer autor,
+	                   @RequestParam("idCategoria") @Nullable Integer categoria,
+	                   @RequestParam("idAutor") @Nullable Integer autor,
 	                   ModelMap modelMap) {
 		
 		 if (categoria == null || autor == null) {
@@ -108,7 +108,7 @@ public class LibroController {
 	        libroDAO.up(libro);
 	    }
 
-	    return "redirect:/libros/listar-libros";
+	    return "redirect:/libros/findAll";
 	}
 
 	

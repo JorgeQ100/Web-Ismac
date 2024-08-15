@@ -33,7 +33,7 @@
 	<input type="text" id="idioma" name="idioma" value="${libro.idioma}">
 	<br/>
 	fechaPublicacion
-	<input type="date" id="fechaPublicacion" name="fechaPublicacion" value="${libro.fechaPublicacion}">
+	<input type="date" id="fechaPublicacion" name="fechaPublicacion" value="${fn:substring(libro.fechaPublicacion,0,10)}">
 	<br/>
 	descripcion
 	<input type="text" id="descripcion" name="descripcion" value="${libro.descripcion}">
@@ -55,23 +55,24 @@
 	<br/>
 	precio
 	<input type="number"  id="precio" name="precio" value="${libro.precio}">
-	
+	<br/>
 	Categoria
 	<select id="idCategoria" name="idCategoria">
-		<option value="1">1</option>
-		<option value="2">2</option>
-		<option value="3">3</option>		
+		<c:forEach var="items" items="${categorias}">
+			<option value="${items.idCategoria}" ${items.idCategoria == libro.categoria.idCategoria ? 'selected' : ''}>${items.categoria}</option>
+		</c:forEach>		
 	</select>
-	
+	<br/>
 	Autor
 	<select id="idAutor" name="idAutor">
-		<option value="1">1</option>
-		<option value="2">2</option>
-		<option value="3">3</option>		
+		<c:forEach var="items" items="${autor}">
+			<option value="${items.idAutor}" ${items.idAutor == libro.autor.idAutor ? 'selected' : ''}>${items.nombre} ${items.apellido}</option>
+		</c:forEach>		
 	</select>
 
 	
 	<button type="submit">Actulizar</button>
+	 <button onclick="window.location.href='/ismac-libreria-web/libros/findAll'; return false;">Eliminar</button>
 	
 	</form>
 
