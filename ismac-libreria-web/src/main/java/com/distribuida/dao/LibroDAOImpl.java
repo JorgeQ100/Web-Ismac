@@ -49,9 +49,14 @@ public class LibroDAOImpl implements LibroDAO {
 	@Override
 	@Transactional
 	public void dell(int id) {
-		Session session = sessionFactory.getCurrentSession();
-		session.delete(id);
-
+	    Session session = sessionFactory.getCurrentSession();
+	    // Recuperar la entidad Libro usando el ID
+	    Libro libro = session.get(Libro.class, id);
+	    if (libro != null) {
+	        // Eliminar la entidad si existe
+	        session.delete(libro);
+	    }
 	}
+
 
 }

@@ -83,42 +83,36 @@ public class LibroController {
 	                   @RequestParam("idCategoria") @Nullable Integer categoria,
 	                   @RequestParam("idAutor") @Nullable Integer autor,
 	                   ModelMap modelMap) {
-		
-		 if (categoria == null || autor == null) {
-		        modelMap.addAttribute("error", "Debe seleccionar una categoría y un autor.");
-		        return "redirect:/libros/listar-libros";  // Nombre de la vista donde se muestra el formulario de nuevo.
-		    }
-		
 
 	    if (idLibro == null) {
+	        // Agregar nuevo Libro
+	        System.out.println("Agregando nuevo Libro con ID: " + idLibro);
 	        Libro libro = new Libro(0, titulo, editorial, numPaginas, edicion, idioma, fechaPublicacion,
 	                                descripcion, tipoPasta, ISBN, numEjemplares, portada, presentacion, precio);
 	        libro.setCategoria(categoriaDAO.findOne(categoria));
 	        libro.setAutor(autorDAO.findOne(autor));
-
 	        libroDAO.add(libro);
-
 	    } else {
-
+	        // Actualizar Libro existente
+	        System.out.println("Actualizando Libro con ID: " + idLibro);
 	        Libro libro = new Libro(idLibro, titulo, editorial, numPaginas, edicion, idioma, fechaPublicacion,
 	                                descripcion, tipoPasta, ISBN, numEjemplares, portada, presentacion, precio);
 	        libro.setCategoria(categoriaDAO.findOne(categoria));
 	        libro.setAutor(autorDAO.findOne(autor));
-
 	        libroDAO.up(libro);
 	    }
 
 	    return "redirect:/libros/findAll";
 	}
 
-	
 	@GetMapping("/del")
-	private String del(@RequestParam("idLibro")@Nullable Integer idLibro ) {
-		libroDAO.dell(idLibro);
-		return "redirect:/libros/listar-libros";
+	private String del(@RequestParam("idLibro") @Nullable Integer idLibro) {
+	    if (idLibro != null) {
+	        libroDAO.dell(idLibro);
+	    }
+	    return "redirect:/libros/findAll";
 	}
-	
-	
+
 	
 	
 	

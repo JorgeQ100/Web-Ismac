@@ -33,32 +33,37 @@
             </tr>
         </thead>
         <tbody>
-            <c:forEach var="items" items="${libro}">
-                <tr> 
-                    <td>${items.idLibro}</td>
-                    <td>${items.titulo}</td>
-                    <td>${items.editorial}</td>
-                    <td>${items.numPaginas}</td>
-                    <td>${items.edicion}</td>
-                    <td>${items.idioma}</td>
-                    <td>${fn:substring(items.fechaPublicacion,0,10)}</td>
-                    <td>${items.descripcion}</td>
-                    <td>${items.tipoPasta}</td> 
-                    <td>${items.ISBN}</td>
-                    <td>${items.numEjemplares}</td>
-                    <td>
-                        <img alt="Portada de libro" width="200" height="200" src="${pageContext.request.contextPath}/resources/img/${items.portada}">
-                    </td>
-                    <td>${items.presentacion}</td>
-                    <td>${items.precio}</td>
-                    <td>${items.categoria.categoria}</td>
-                    <td>${items.autor.nombre} ${items.autor.apellido}</td>
-                    <td>
-                        <button onclick="window.location.href='/ismac-libreria-web/libros/findOne?idLibro=${items.idLibro}&opcion=1'; return false;">Actualizar</button>
-                        <button onclick="window.location.href='/ismac-libreria-web/libros/findOne?idLibro=${items.idLibro}&opcion=2'; return false;">Eliminar</button>
-                    </td>
-                </tr> 
-            </c:forEach>
+           	<c:forEach var="item" items="${libro}">
+				<tr>
+					<td>${item.idLibro}</td>
+					<td>${item.titulo}</td>
+					<td>${item.editorial}</td>
+					<td>${item.numPaginas}</td>
+					<td>${item.edicion}</td>
+					<td>${item.idioma}</td>
+					<td>${fn:substring(item.fechaPublicacion,0,10)}</td>
+					<td>${item.descripcion}</td>
+					<td>${item.tipoPasta}</td>
+					<td>${item.ISBN}</td>
+					<td>${item.numEjemplares}</td>
+					<td>
+						<img alt="Portada de libro" width="100" height="100" src="${pagecontext.request.contextPath}/resources/img/${item.portada}"/>
+					</td>
+					<td>${item.presentacion}</td>
+					<td>${item.precio}</td>
+					<td>${item.categoria.categoria}</td>
+					<td>${item.autor.nombre}${item.autor.apellido}</td>
+		
+					<td>
+					 		<button onclick="window.location.href='/ismac-libreria-web/libros/findOne?idLibro=${item.idLibro}&opcion=1'; return false;">
+					 		Actualizar
+					 	</button>
+					 	<button onclick="window.location.href='/ismac-libreria-web/libros/findOne?idLibro=${item.idLibro}&opcion=2'; return false;">
+					 		Eliminar
+					 	</button>
+					</td>
+				</tr>
+			</c:forEach>
         </tbody>
     </table>
 </body>
